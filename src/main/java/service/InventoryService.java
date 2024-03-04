@@ -2,6 +2,7 @@ package service;
 
 import model.Product;
 
+import java.util.Comparator;
 import java.util.List;
 
 public interface InventoryService {
@@ -10,6 +11,10 @@ public interface InventoryService {
     void updateProduct(String barcode,Product product);
 
     List<Product> showProducts();
+    Product getProductByBarcode(String barcode);
+
+
+
 
 
 }

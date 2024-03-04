@@ -8,8 +8,7 @@ import service.InventoryService;
 import service.InventoryServiceImpl;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class PosUI {
  private  final InventoryService inventoryService  ;
@@ -61,10 +60,29 @@ public class PosUI {
     }
 
     private void updateProduct() {
+        System.out.println("Update an Existing Product ");
+        userInputReader.readString("");
+        String barcode = userInputReader.readString("Enter barcode of the product to be updated.");
+        String name = userInputReader.readString("Enter name of the product to be updated");
+        BigDecimal price = userInputReader.readBigDecimal("Enter new price");
+        int categoryOrdinal = userInputReader.readInt(" Enter new category number ( 0-FOOD,1-CLOTHING,2-ELECTRONICS,3-BOOKS,4-PRODUCE,5-MEAT,6-OTHERS)");
+        int quantity = userInputReader.readInt("Enter new quantity");
+        Category category = Category.values()[categoryOrdinal];
+        Product product = new Product(barcode,name,price,category,quantity);
+        inventoryService.updateProduct(barcode,product);
+        System.out.println("Product with barcode "+barcode + " updated successfully ");
+
 
     }
 
     private void removeProduct() {
+        userInputReader.readString("");
+        System.out.println("Removing a Product ");
+
+        String barcode = userInputReader.readString("Enter barcode of the product to be removed.");
+        inventoryService.removeProduct(barcode);
+        System.out.println("Product with barcode: "+barcode+ "removed successfully ");
+
     }
 
     private void addProduct() {
@@ -85,7 +103,12 @@ public class PosUI {
     public static void main(String[] args) {
 InventoryService service = new InventoryServiceImpl();
      PosUI ui = new PosUI(service);
-        ui.showMenu();
+       ui.showMenu();
+
+
+
+
+
 
 
     }

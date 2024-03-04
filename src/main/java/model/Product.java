@@ -2,7 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 
-public class Product  extends  Object{
+public class Product  implements  Comparable<Product> {
 
     private String barcode;
     private String name;
@@ -70,5 +70,10 @@ public class Product  extends  Object{
                 ", category=" + category +
                 ", quantity=" + quantity +
                 '}';
+    }
+// how should I sorted by name and quantity
+    @Override
+    public int compareTo(Product o) {
+        return this.name.compareTo(o.name);
     }
 }

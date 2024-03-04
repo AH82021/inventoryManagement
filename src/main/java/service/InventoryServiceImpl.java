@@ -92,4 +92,24 @@ String sql ="DELETE FROM product WHERE barcode= ? ";
         }
         return productList;
     }
+
+    @Override
+    public Product getProductByBarcode(String barcode) {
+//        String sql = "SELECT * FROM product WHERE barcode = ? ";
+//        try(Connection connection = DatabaseUtil.getConnection();
+//            PreparedStatement pstmt = connection.prepareStatement(sql);
+//           ) {
+//            pstmt.setString(1, barcode);
+//
+//
+//
+//
+//        } catch (Exception e){
+//            System.out.println("Error while reading Product from db"+e.getMessage());
+//        }
+
+        return null;
+    }
+
+
 }
